@@ -1,5 +1,6 @@
 var express = require('express'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    bodyParser = require('body-parser');
 
 // Open connnect to the bookAPI database if it exists otherwise create the database.
 var db = mongoose.connect('mongodb://localhost/bookAPI');
@@ -11,10 +12,19 @@ var app = express();
 // Get the port number from the ENV variable PORT otherwise set it to 3000
 var port = process.env.PORT || 3000;
 
+// Use middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 // Routes
 var bookRouter = express.Router();
 
 bookRouter.route("/Books")
+    .post((request, response) => {
+        var book = new Book(request.body);
+        console.log(book);
+        response.send(book);
+    })
     .get((request, response) => {
         var query = request.query;
         var query = {};

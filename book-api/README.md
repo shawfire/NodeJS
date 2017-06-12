@@ -57,4 +57,27 @@ http://localhost:8000/api/Books?genre=Science%20Fiction
 http://localhost:8000/api/Books/593ded973615ba6f0c53f8f3
 
 ## Implement HTTP Post verb
+Test with Chrome extension Postman
+Read the book and parse into a JSON object we can understand using body-parser.
+
+yarn add body-parser
+
+yarn help add
+
+Postman
+1. GET - localhost:8000 
+2. GET - localhost:8000/api/Books
+3. GET - localhost:8000/api/Books/593ded973615ba6f0c53f8f3
+3. POST - localhost:8000/api/Books/
+  Header 
+  - Key: Content-Type
+  - Value: application/json
+  - Body: {
+"title": "Bread upon the waters",
+"genre": "Fiction",
+"authour": "Irwin Shaw",
+"read": false
+}
+Send
+Check gulp/Node console...
 

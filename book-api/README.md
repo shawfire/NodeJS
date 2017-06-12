@@ -28,7 +28,7 @@ yarn add gulp global
 yarn add gulp-nodemon --save
 ```
 
-## Implement HTTP Get verb
+## Implement HTTP Get verb to get items
 Add Chrome extension "JSON Formater"
   Chrome -> Preferences -> Extensions -> Get more extensions ...
 mongodb.org
@@ -56,7 +56,7 @@ http://localhost:8000/api/Books?genre=Science%20Fiction
 
 http://localhost:8000/api/Books/593ded973615ba6f0c53f8f3
 
-## Implement HTTP Post verb
+## Implement HTTP Post verb to insert a new item
 Test with Chrome extension Postman
 Read the book and parse into a JSON object we can understand using body-parser.
 
@@ -80,4 +80,24 @@ Postman
 }
 Send
 Check gulp/Node console...
+
+## Implement Put and Patch verbs to update an existing item
+Postman
+3. GET - localhost:8000/api/Books/
+3. PUT - localhost:8000/api/Books/593e23247e182e6377bc9648
+  Header 
+  - Key: Content-Type
+  - Value: application/json
+  - Body: {
+  "_id": "593e23247e182e6377bc9648"
+}
+4. PUT - localhost:8000/api/Books/593e23247e182e6377bc9648
+{
+	"title": "Bread Upon The Waters Three",
+	"genre": "Non Fiction",
+	"author": "Irwin Shaw"
+}
+
+
+[Plurasight RESTful Web Services with NodeJS by Jonathan Mills](https://app.pluralsight.com/player?course=node-js-express-rest-web-services&author=jonathan-mills&name=node-js-express-rest-web-services-m4&clip=1)
 

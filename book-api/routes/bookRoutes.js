@@ -34,6 +34,20 @@ const routes = (Book) => {
                     response.json(book);
                 }
             });
+        })
+        .put((request, response) => {
+            Book.findById(request.params.bookId, (err, book) => {
+                if (err) {
+                    response.status(500).send(err);
+                } else {
+                    book.title = request.body.title;
+                    book.author = request.body.author;
+                    book.genre = request.body.genre;
+                    book.read = request.body.read;
+                    book.save();
+                    response.json(book);
+                }
+            });
         });
 
     return bookRouter;

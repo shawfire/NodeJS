@@ -27,3 +27,16 @@ yarn add gulp --save
 yarn add gulp global
 yarn add gulp-nodemon --save
 ```
+
+## Implement HTTP Get verb
+Add Chrome extension "JSON Formater"
+  Chrome -> Preferences -> Extensions -> Get more extensions ...
+mongodb.org
+```
+yarn add mongoose --save
+mongod
+gulp
+```
+mongoose - like an entity framework (.Net)/ Active record (Rails) / Hybernate (JEE) ORM (Object relational mapper)
+
+

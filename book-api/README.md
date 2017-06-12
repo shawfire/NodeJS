@@ -120,5 +120,9 @@ yarn add gulp-mocha should sinon
 ## Integration tests with supertest and gulp-env
 yarn add supertest gulp-env --dev
 
+## HATEOS -> Hypermedia as the Engine of Application State
+Self documentation for consumers of your API.
+
+
 [Plurasight RESTful Web Services with NodeJS by Jonathan Mills](https://app.pluralsight.com/player?course=node-js-express-rest-web-services&author=jonathan-mills&name=node-js-express-rest-web-services-m4&clip=1)
 

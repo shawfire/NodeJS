@@ -24,7 +24,12 @@ const bookController = (Book) => {
             if (err) {
                 res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err);
             } else {
-                res.json(books);
+                res.json(books.map(book => {
+                    var newBook = book.toJSON();
+                    newBook.links = {};
+                    newBook.links.self = `http://${req.headers.host}/api/books/${newBook._id}`;
+                    return newBook;
+                }));
             }
         });
     }

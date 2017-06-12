@@ -28,7 +28,7 @@ yarn add gulp global
 yarn add gulp-nodemon --save
 ```
 
-## Implement HTTP Get verb to get items
+## Implement the HTTP Get verb to get items
 Add Chrome extension "JSON Formater"
   Chrome -> Preferences -> Extensions -> Get more extensions ...
 mongodb.org
@@ -56,7 +56,7 @@ http://localhost:8000/api/Books?genre=Science%20Fiction
 
 http://localhost:8000/api/Books/593ded973615ba6f0c53f8f3
 
-## Implement HTTP Post verb to insert a new item
+## Implement the HTTP Post verb to insert a new item
 Test with Chrome extension Postman
 Read the book and parse into a JSON object we can understand using body-parser.
 
@@ -81,7 +81,7 @@ Postman
 Send
 Check gulp/Node console...
 
-## Implement Put verbs to update an existing item
+## Implement the Put verb to update an existing item
 Postman
 3. GET - localhost:8000/api/Books/
 3. PUT - localhost:8000/api/Books/593e23247e182e6377bc9648
@@ -98,13 +98,21 @@ Postman
 	"author": "Irwin Shaw"
 }
 
-## Implement Patch verbs to update an existing item with Middleware
+## Implement the Patch verb to update an existing item with Middleware
 Postman
 1. PATCH - localhost:8000/api/Books/593e23247e182e6377bc9648
 {
 	"read": true
 }
 
+## Implement Delete verb and use http-status-codes to avoid use of hard coded numbers
+Postman
+1. DELETE - localhost:8000/api/Books/593e23247e182e6377bc9648
+2. GET - localhost:8000/api/Books/593e23247e182e6377bc9648
+  book not found
+
+[http-status-codes](https://www.npmjs.com/package/http-status-codes)
+yarn add http-status-codes
 
 [Plurasight RESTful Web Services with NodeJS by Jonathan Mills](https://app.pluralsight.com/player?course=node-js-express-rest-web-services&author=jonathan-mills&name=node-js-express-rest-web-services-m4&clip=1)
 

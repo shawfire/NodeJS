@@ -1,4 +1,5 @@
 const express = require('express');
+const HttpStatus = require('http-status-codes');
 
 const routes = (Book) => {
     var bookRouter = express.Router();
@@ -8,7 +9,7 @@ const routes = (Book) => {
             var book = new Book(req.body);
             book.save();
             // 201 - Created Status
-            res.status(201).send(book);
+            res.status(HttpStatus.CREATED).send(book);
         })
         .get((req, res) => {
             var query = req.query;
@@ -29,12 +30,12 @@ const routes = (Book) => {
     bookRouter.use('/:bookId', (req, res, next) => {
         Book.findById(req.params.bookId, (err, book) => {
             if (err) {
-                res.status(500).send(err);
+                res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err);
             } else if (book) {
                 req.book = book;
                 next()
             } else {
-                res.status(404).send('No book found');
+                res.status(HttpStatus.NOT_FOUND).send('No book found');
             }
         });
     });
@@ -49,7 +50,7 @@ const routes = (Book) => {
             req.book.genre = req.body.genre;
             req.book.read = req.body.read;
             req.book.save(err => err ?
-                res.status(500).send(err) :
+                res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err) :
                 res.json(req.book)
             );
         })
@@ -61,8 +62,14 @@ const routes = (Book) => {
                 req.book[param] = req.body[param];
             }
             req.book.save(err => err ?
-                res.status(500).send(err) :
+                res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err) :
                 res.json(req.book)
+            );
+        })
+        .delete((req, res) => {
+            req.book.remove(err => err ?
+                res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err) :
+                res.status(HttpStatus.NO_CONTENT).send('Removed')
             );
         });
 

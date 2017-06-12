@@ -81,7 +81,7 @@ Postman
 Send
 Check gulp/Node console...
 
-## Implement Put and Patch verbs to update an existing item
+## Implement Put verbs to update an existing item
 Postman
 3. GET - localhost:8000/api/Books/
 3. PUT - localhost:8000/api/Books/593e23247e182e6377bc9648
@@ -96,6 +96,13 @@ Postman
 	"title": "Bread Upon The Waters Three",
 	"genre": "Non Fiction",
 	"author": "Irwin Shaw"
+}
+
+## Implement Patch verbs to update an existing item with Middleware
+Postman
+1. PATCH - localhost:8000/api/Books/593e23247e182e6377bc9648
+{
+	"read": true
 }
 
 

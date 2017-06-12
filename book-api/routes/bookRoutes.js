@@ -4,27 +4,11 @@ const HttpStatus = require('http-status-codes');
 const routes = (Book) => {
     var bookRouter = express.Router();
 
+    const bookController = require('../controllers/bookController')(Book)
+
     bookRouter.route("/")
-        .post((req, res) => {
-            var book = new Book(req.body);
-            book.save();
-            // 201 - Created Status
-            res.status(HttpStatus.CREATED).send(book);
-        })
-        .get((req, res) => {
-            var query = req.query;
-            var query = {};
-            if (req.query.genre) {
-                query.genre = req.query.genre;
-            }
-            Book.find(query, function(err, books) {
-                if (err) {
-                    res.status(500).send(err);
-                } else {
-                    res.json(books);
-                }
-            });
-        });
+        .post(bookController.post)
+        .get(bookController.get);
 
     // Middleware
     bookRouter.use('/:bookId', (req, res, next) => {

@@ -1,0 +1,8 @@
+{
+  "name": "blogs",
+  "version": "1.0.0",
+  "description": "NodeJS blogs app.",
+  "main": "index.js",
+  "author": "John Shaw",
+  "license": "MIT"
+}

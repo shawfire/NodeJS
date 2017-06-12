@@ -22,8 +22,9 @@ var bookRouter = express.Router();
 bookRouter.route("/Books")
     .post((request, response) => {
         var book = new Book(request.body);
-        console.log(book);
-        response.send(book);
+        book.save();
+        // 201 - Created Status
+        response.status(201).send(book);
     })
     .get((request, response) => {
         var query = request.query;

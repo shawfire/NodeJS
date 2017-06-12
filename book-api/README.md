@@ -39,4 +39,16 @@ gulp
 ```
 mongoose - like an entity framework (.Net)/ Active record (Rails) / Hybernate (JEE) ORM (Object relational mapper)
 
+[Insert Data with the mongo Shell](https://docs.mongodb.com/getting-started/shell/insert/)
+mongo
+use bookAPI
+db.books.insert({title: "War and Peace", genre: "Historical Fiction", authour: "Lev Nikolayevich Tolstoy", read: false})
+db.books.insert({title: "Les Misérables", genre: "Historical Fiction", authour: "Victor Hugo", read: false})
+db.books.insert({title: "The Time Machine", genre: "Science Fiction", authour: "H. G. Wells", read: false})
+db.books.insert({title: "A Journey into the Center of the Earth", genre: "Science Fiction", authour: "Jules Verne", read: false})
+db.books.insert({title: "The Dark World", genre: "Fantasy", authour: "Henry Kuttner", read: false})
+
+http://localhost:8000/api/Books
+http://localhost:8000/api/Book?genre=Fiction
+  request.query = { genre: 'Fiction' }
 

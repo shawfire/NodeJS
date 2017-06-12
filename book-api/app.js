@@ -15,7 +15,7 @@ var port = process.env.PORT || 3000;
 var bookRouter = express.Router();
 
 bookRouter.route("/Books")
-    .get(function(request, response) {
+    .get((request, response) => {
         var query = request.query;
         var query = {};
         if (request.query.genre) {
@@ -31,8 +31,8 @@ bookRouter.route("/Books")
     });
 
 bookRouter.route("/Books/:bookId")
-    .get(function(request, response) {
-        Book.findById(request.params.bookId, function(err, book) {
+    .get((request, response) => {
+        Book.findById(request.params.bookId, (err, book) => {
             if (err) {
                 response.status(500).send(err);
             } else {
@@ -43,11 +43,11 @@ bookRouter.route("/Books/:bookId")
 
 app.use('/api', bookRouter);
 
-app.get('/', function(request, response) {
+app.get('/', (request, response) => {
     response.send('Welcome to my API.....');
 });
 
 // Start listening on the port
-app.listen(port, function() {
+app.listen(port, () => {
     console.log('Gulp is running my app on PORT: ' + port);
 });

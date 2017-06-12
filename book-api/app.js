@@ -3,7 +3,9 @@ const express = require('express'),
     bodyParser = require('body-parser');
 
 // Open connnect to the bookAPI database if it exists otherwise create the database.
-const db = mongoose.connect('mongodb://localhost/bookAPI');
+var db = (process.env.ENV == 'Test') ?
+    mongoose.connect('mongodb://localhost/bookAPI_test') :
+    mongoose.connect('mongodb://localhost/bookAPI');
 
 const Book = require('./models/bookModel');
 
@@ -29,3 +31,5 @@ app.get('/', (request, response) => {
 app.listen(port, () => {
     console.log('Gulp is running my app on PORT: ' + port);
 });
+
+module.exports = app;

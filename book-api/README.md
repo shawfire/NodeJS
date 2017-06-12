@@ -52,3 +52,5 @@ http://localhost:8000/api/Books
 http://localhost:8000/api/Book?genre=Fiction
   request.query = { genre: 'Fiction' }
 
+http://localhost:8000/api/Books?genre=Science%20Fiction
+

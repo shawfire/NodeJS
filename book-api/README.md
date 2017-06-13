@@ -33,6 +33,7 @@ Add Chrome extension "JSON Formater"
   Chrome -> Preferences -> Extensions -> Get more extensions ...
 mongodb.org
 ```
+brew install mongo
 yarn add mongoose --save
 mongod
 gulp
@@ -120,7 +121,7 @@ yarn add gulp-mocha should sinon
 ## Integration tests with supertest and gulp-env
 yarn add supertest gulp-env --dev
 
-## HATEOS -> Hypermedia as the Engine of Application State
+## HATEOS -> Hypermedia as the Engine of Application State -> Self documenting links
 Self documentation for consumers of your API.
 
 

@@ -10,58 +10,13 @@ const routes = (Book) => {
         .post(bookController.post)
         .get(bookController.get);
 
-    // Middleware
-    bookRouter.use('/:bookId', (req, res, next) => {
-        Book.findById(req.params.bookId, (err, book) => {
-            if (err) {
-                res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err);
-            } else if (book) {
-                req.book = book;
-                next()
-            } else {
-                res.status(HttpStatus.NOT_FOUND).send('No book found');
-            }
-        });
-    });
+    bookRouter.use('/:bookId', bookController.bookIdMiddleware);
 
     bookRouter.route("/:bookId")
-        .get((req, res) => {
-            var returnBook = req.book.toJSON();
-
-            returnBook.links = {};
-            returnBook.links.FilterByThisGenre =
-                `http://${req.headers.host}/api/books/?genre=${returnBook.genre}`.replace(' ', '%20');
-
-            res.json(returnBook);
-        })
-        .put((req, res) => {
-            req.book.title = req.body.title;
-            req.book.author = req.body.author;
-            req.book.genre = req.body.genre;
-            req.book.read = req.body.read;
-            req.book.save(err => err ?
-                res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err) :
-                res.json(req.book)
-            );
-        })
-        .patch((req, res) => {
-            if (req.body._id) {
-                delete req.body._id;
-            }
-            for (var param in req.body) {
-                req.book[param] = req.body[param];
-            }
-            req.book.save(err => err ?
-                res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err) :
-                res.json(req.book)
-            );
-        })
-        .delete((req, res) => {
-            req.book.remove(err => err ?
-                res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err) :
-                res.status(HttpStatus.NO_CONTENT).send('Removed')
-            );
-        });
+        .get(bookController.getBookId)
+        .put(bookController.put)
+        .patch(bookController.patch)
+        .delete(bookController.delete);
 
     return bookRouter;
 };

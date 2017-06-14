@@ -127,3 +127,6 @@ Self documentation for consumers of your API.
 
 [Plurasight RESTful Web Services with NodeJS by Jonathan Mills](https://app.pluralsight.com/player?course=node-js-express-rest-web-services&author=jonathan-mills&name=node-js-express-rest-web-services-m4&clip=1)
 
+https://enable-cors.org/server.html
+https://crossorigin.me/
+

@@ -21,6 +21,8 @@ const bookController = (Book) => {
             query.genre = req.query.genre;
         }
         Book.find(query, function(err, books) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             if (err) {
                 res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err);
             } else {

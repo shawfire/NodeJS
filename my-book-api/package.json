@@ -1,0 +1,7 @@
+{
+    "name": "my-book-api",
+    "version": "1.0.0",
+    "main": "app.js",
+    "author": "John Shaw",
+    "license": "MIT"
+}
